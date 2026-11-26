@@ -1,0 +1,10 @@
+src/components/Layout.tsx
+src/components/sections/about/AboutCompareLists.tsx
+src/components/sections/contact/ContactFormGlassPhoto.tsx
+src/components/sections/faq/FaqCardGrid.tsx
+src/components/sections/footer/FooterQuietColumns.tsx
+src/components/sections/hero/HeroBadgeCentered.tsx
+src/components/sections/metrics/MetricsDividerRow.tsx
+src/components/sections/social-proof/SocialProofWordmarkGrid.tsx
+src/components/sections/testimonial/TestimonialLogoCarousel.tsx
+src/pages/HomePage.tsx

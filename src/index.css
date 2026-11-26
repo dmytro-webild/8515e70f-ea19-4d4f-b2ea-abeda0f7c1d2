@@ -1,0 +1,353 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap");
+@import "tailwindcss";
+@import "./styles/animations.css";
+@import "./styles/masks.css";
+
+@theme {
+  --breakpoint-lg: 55rem;
+}
+
+/* webild:theme-ai */
+:root {
+  --primary-cta: #3550d8;
+  --primary-cta-text: #ffffff;
+  --secondary-cta: #e7e9e4;
+  --secondary-cta-text: #10120f;
+  --background-accent: #3550d8;
+
+  --background: #f3f4f1;
+  --foreground: #10120f;
+  --card: #ffffff;
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: var(--primary-cta);
+  --primary-foreground: var(--primary-cta-text);
+  --secondary: var(--secondary-cta);
+  --secondary-foreground: var(--secondary-cta-text);
+  --muted: #eceee9;
+  --muted-foreground: #565a53;
+  --accent: var(--background-accent);
+  --accent-foreground: #ffffff;
+  --deep: #ffffff;
+  --deep-foreground: #10120f;
+  --destructive: #ff6b6b;
+  --destructive-foreground: #050605;
+  --border: #d5d8d1;
+  --input: #212221;
+  --ring: var(--primary-cta);
+
+  --strand-tint: #0aa3b5;
+
+  --font-heading: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-body: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-label: "Onest", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-accent: "Onest", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --heading-weight: 500;
+  --heading-tracking: -0.035em;
+  --heading-leading: 1.08;
+  --text-display: clamp(2.875rem, 2.5rem + 1.6vw, 3.875rem);
+  --text-h1: clamp(2.45rem, 2.24rem + 0.98vw, 3.25rem);
+  --text-h2: clamp(1.75rem, 1.65rem + 0.45vw, 2.25rem);
+  --text-h3: clamp(1.1875rem, 1.12rem + 0.3vw, 1.375rem);
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-label: 0.75rem;
+  --label-tracking: 0.06em;
+  --label-case: uppercase;
+
+  --gutter: clamp(1rem, 0.4rem + 2.2vw, 2.25rem);
+  --max-w: 1120px;
+  --container: min(100% - 2 * var(--gutter), var(--max-w));
+  --section-space: clamp(4.5rem, 4rem + 1.6vw, 6rem);
+  --gap: clamp(0.875rem, 0.7rem + 0.6vw, 1.25rem);
+  --grid-columns: 12;
+
+  --radius: 1rem;
+  --radius-card: 1.25rem;
+  --radius-button: 0.75rem;
+  --radius-image: 0.875rem;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-fast: 0.35s;
+  --dur-base: 0.8s;
+  --dur-slow: 1.3s;
+  --reveal-distance: 1.5rem;
+
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-deep: var(--deep);
+  --color-deep-foreground: var(--deep-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-label);
+  --font-serif: var(--font-accent);
+
+  --radius: var(--radius);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 40%, transparent);
+  }
+
+  html {
+    background-color: var(--background);
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-foreground);
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: var(--heading-weight);
+    letter-spacing: var(--heading-tracking);
+    line-height: var(--heading-leading);
+  }
+}
+
+@layer components {
+  .btn-primary,
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: var(--radius-button);
+    font-family: var(--font-body);
+    font-weight: 500;
+    line-height: 1.2;
+    white-space: nowrap;
+    cursor: pointer;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    transition:
+      color 0.45s var(--ease-out),
+      border-color 0.45s var(--ease-out);
+  }
+
+  .btn-primary::before,
+  .btn-secondary::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: -1;
+    border-radius: inherit;
+    clip-path: inset(100% 0 0 0 round 40% 40% 0 0);
+    transition: clip-path 0.6s var(--ease-out);
+  }
+
+  .btn-primary:hover::before,
+  .btn-secondary:hover::before,
+  .btn-primary:focus-visible::before,
+  .btn-secondary:focus-visible::before {
+    clip-path: inset(0 0 0 0 round 0);
+  }
+
+  .btn-primary {
+    background: var(--foreground);
+    color: var(--background);
+  }
+
+  .btn-primary::before {
+    background: var(--primary);
+  }
+
+  .btn-primary:hover,
+  .btn-primary:focus-visible {
+    color: var(--primary-foreground);
+    outline: none;
+  }
+
+  .btn-secondary {
+    background: color-mix(in srgb, var(--background) 40%, transparent);
+    color: var(--secondary-foreground);
+    border: 1px solid color-mix(in srgb, var(--foreground) 14%, transparent);
+  }
+
+  .btn-secondary::before {
+    background: var(--foreground);
+  }
+
+  .btn-secondary:hover,
+  .btn-secondary:focus-visible {
+    color: var(--background);
+    border-color: var(--foreground);
+    outline: none;
+  }
+
+  .card {
+    background: color-mix(in srgb, var(--card) 68%, transparent);
+    border: 1px solid transparent;
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, var(--foreground) 10%, transparent),
+      inset 0 1px 0 0 color-mix(in srgb, var(--foreground) 8%, transparent);
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+  }
+
+  .card.w-fit {
+    background: color-mix(in srgb, var(--foreground) 6%, var(--background));
+    border-color: color-mix(in srgb, var(--foreground) 12%, transparent);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .card .card {
+    background: color-mix(in srgb, var(--foreground) 5%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--foreground) 9%, transparent);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  [data-section="team"] .card .card {
+    background: color-mix(in srgb, var(--card) 62%, transparent);
+  }
+
+  [data-appear] :is(.card, h1, h2, h3, h4, p, img, video, a, button, input, textarea, svg) {
+    opacity: var(--appear, 1);
+  }
+
+  [data-section="navbar"] {
+    border-bottom: 1px solid transparent;
+    transition:
+      height 0.5s ease-in-out,
+      background-color 0.5s ease-in-out,
+      backdrop-filter 0.5s ease-in-out,
+      border-color 0.5s ease-in-out;
+  }
+
+  [data-section="navbar"].h-15 {
+    background-color: color-mix(in srgb, var(--background) 55%, transparent);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom-color: color-mix(in srgb, var(--foreground) 8%, transparent);
+  }
+
+  .btn-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-size: var(--text-small);
+    line-height: 1.2;
+    color: currentColor;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 0.25rem;
+    transition: background-size var(--dur-base) var(--ease-out);
+  }
+
+  .btn-link:hover,
+  .btn-link:focus-visible {
+    background-size: 100% 1px;
+    outline: none;
+  }
+
+  .kit-card {
+    background:
+      radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--foreground) 4%, transparent), transparent 70%),
+      color-mix(in srgb, var(--card) 66%, transparent);
+    color: var(--card-foreground);
+    border-radius: var(--radius-card);
+    box-shadow:
+      inset 0 0 0 1px color-mix(in srgb, var(--foreground) 8%, transparent),
+      inset 0 1px 0 0 color-mix(in srgb, var(--foreground) 6%, transparent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .kit-card .kit-card {
+    background: color-mix(in srgb, var(--foreground) 3%, var(--card));
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .kit-chip {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+    color: var(--accent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent);
+  }
+
+  [data-card="solid"] .kit-card {
+    background: var(--card);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .kit-dots {
+    background-image: radial-gradient(circle, color-mix(in srgb, currentColor 22%, transparent) 1px, transparent 1.4px);
+    background-size: 1.25rem 1.25rem;
+  }
+
+  .kit-pattern {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  main:has(> .kit-pattern) {
+    position: relative;
+    isolation: isolate;
+  }
+
+  [data-pattern="dots"] .kit-pattern {
+    display: block;
+    color: var(--foreground);
+    background-image: radial-gradient(circle, color-mix(in srgb, currentColor 9%, transparent) 1px, transparent 1.4px);
+    background-size: 1.75rem 1.75rem;
+    mask-image: radial-gradient(ellipse at 30% 20%, #000 0%, transparent 65%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-primary,
+  .btn-secondary,
+  .btn-link {
+    transition: none;
+  }
+}
